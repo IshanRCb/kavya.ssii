@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hey Kavya!!</title>
+    <style>
+        body {
+            text-align: center;
+            background-color: #fce4ec;
+            font-family: 'Arial', sans-serif;
+            padding: 50px;
+            transition: background-color 1s ease-in-out;
+        }
+        .card {
+            background: white;
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+            display: inline-block;
+            animation: fadeIn 1s ease-in-out;
+        }
+        h1 {
+            color: #d32f2f;
+        }
+        p {
+            font-size: 18px;
+            color: #444;
+        }
+        button {
+            background: #d32f2f;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 10px;
+            font-size: 18px;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+        button:hover {
+            background: #b71c1c;
+            transform: scale(1.1);
+        }
+        .hidden {
+            display: none;
+        }
+        @keyframes moveAround {
+            0% { transform: translate(0, 0); }
+            25% { transform: translate(100px, 50px); }
+            50% { transform: translate(-100px, -50px); }
+            75% { transform: translate(50px, -100px); }
+            100% { transform: translate(0, 0); }
+        }
+        .moving-img {
+            width: 150px;
+            border-radius: 50%;
+            animation: moveAround 5s infinite alternate ease-in-out;
+        }
+        @keyframes fallingHearts {
+            0% { transform: translateY(0); opacity: 1; }
+            100% { transform: translateY(500px); opacity: 0; }
+        }
+        .heart {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background: red;
+            clip-path: polygon(50% 0%, 100% 30%, 80% 100%, 50% 80%, 20% 100%, 0% 30%);
+            animation: fallingHearts 2s linear infinite;
+        }
+    </style>
+</head>
+<body>
+    <div id="page1">
+        <h1>Do you want to move further? 🤔</h1>
+        <button onclick="showPage2()">Yes</button>
+        <button onclick="alert('Oh no! 😢 Please reconsider.')">No</button>
+    </div>
+
+    <div id="page2" class="hidden">
+        <div class="card">
+            <img src="Screenshot_2024-03-26-21-21-27-99.jpg" alt="Best Friend" class="moving-img">
+            <h1>You 💖</h1>
+            <p>Kavya, I just want to take a moment to appreciate everything you bring into our friendship.You always give your best—whether it’s in the little things or the big moments—and that’s something I truly respect. I know that along the way, there were times I could have understood you better or handled things differently, and for that, I’m genuinely sorry. No friendship is perfect, but what we have is real, and I’ll always be grateful for the bond we share. No matter where life takes us, I’ll always hold onto the good memories and appreciate the kindness, patience, and honesty you show. You truly are an amazing friend, and I hope you always find the happiness and peace you deserve.🌟</p>
+            <button onclick="showPage3()">Next</button>
+        </div>
+    </div>
+
+    <div id="page3" class="hidden">
+        <div class="card">
+            <h1>i'm sorry muski</h1>
+            <p>Muskii,
+
+I know that over time, my insecurities and overthinking hurt you in ways I never intended. I let my fears and emotions take over, and in that process, I made you feel uncomfortable, maybe even burdened, with my reactions. I never wanted to control you or make things difficult, but I now realize that my words and actions might have done just that. I was so scared of losing the bond we shared that I ended up pushing you away instead.  
+
+I should have trusted our friendship more instead of letting my insecurities get in the way. I let my fears of being replaced and my frustration cloud my judgment, and I reacted in ways that were unfair to you. But please know, it was never because I didn’t value you—it was because I valued you too much and didn’t know how to handle my emotions the right way.  
+
+I can see now how all of this must have affected you, and I truly regret it. The last thing I ever wanted was for you to feel suffocated or hurt because of me. I just wish I had been able to show my care in a way that didn’t feel overwhelming to you. I am really sorry for all the times I made things harder instead of easier, for all the words I spoke in frustration that I can’t take back now.  
+
+I don’t expect you to forget everything, but I just want you to know that I see where I went wrong, and I’m working on myself—not just for you, but for me too. No matter where we stand today, I still care about you just as much, and I hope one day, you’ll remember me not for my mistakes but for the friend who truly cherished you.💔</p>
+            <button onclick="showPage4()">Next</button>
+        </div>
+    </div>
+
+    <div id="page4" class="hidden">
+        <div class="card">
+            <h1>I'm Really Sorry 😔</h1>
+            <p>Hey bestie, I know I hurt you, and I regret it so much. I just want to make things right and be your friend again. Can we be friends again? 💙</p>
+            <button onclick="showHearts()">Yes 💕</button>
+        </div>
+    </div>
+
+    <script>
+        function showPage2() {
+            document.getElementById('page1').classList.add('hidden');
+            document.getElementById('page2').classList.remove('hidden');
+        }
+
+        function showPage3() {
+            document.getElementById('page2').classList.add('hidden');
+            document.getElementById('page3').classList.remove('hidden');
+        }
+
+        function showPage4() {
+            document.getElementById('page3').classList.add('hidden');
+            document.getElementById('page4').classList.remove('hidden');
+        }
+
+        function showHearts() {
+            alert('Yayyy... We are friends again! 🎉');
+            for (let i = 0; i < 20; i++) {
+                let heart = document.createElement('div');
+                heart.classList.add('heart');
+                heart.style.left = Math.random() * window.innerWidth + 'px';
+                heart.style.animationDuration = (Math.random() * 2 + 1) + 's';
+                document.body.appendChild(heart);
+                setTimeout(() => heart.remove(), 2000);
+            }
+        }
+    </script>
+</body>
+</html>
